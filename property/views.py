@@ -29,10 +29,16 @@ def show_flats(request):
 
     towns = Flat.objects.values_list(
         'town', flat=True).distinct().order_by('town')
-    return render(request, 'flats_list.html', {
-        'flats': flats[:10],
-        'towns': towns,
-        'active_town': town,
-        'max_price': max_price,
-        'min_price': min_price,
-        'new_building': new_building})
+
+    return render(
+        request,
+        'flats_list.html', 
+        {
+            'flats': flats[:10],
+            'towns': towns,
+            'active_town': town,
+            'max_price': max_price,
+            'min_price': min_price,
+            'new_building': new_building,
+       },
+    )
