@@ -13,4 +13,4 @@ class FlatAdmin(admin.ModelAdmin):
 
 @admin.register(Complain)
 class ComplainAdmin(admin.ModelAdmin):
-    raw_id_fields = ['flat']
+    raw_id_fields = ['user', 'flat']
