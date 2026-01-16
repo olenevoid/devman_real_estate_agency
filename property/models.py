@@ -70,6 +70,9 @@ class Complain(models.Model):
     )
     text = models.TextField(verbose_name='Текст жалобы')
 
+    def __str__(self):
+        return f'{self.user.username}, {self.flat.town}, {self.flat.address}'
+
 
 class Owner(models.Model):
     name = models.CharField('ФИО владельца', max_length=200)
