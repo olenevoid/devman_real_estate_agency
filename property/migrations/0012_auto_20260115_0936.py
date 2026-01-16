@@ -13,7 +13,7 @@ def migrate_owners(apps, schema_editor):
             phonenumber=flat.owners_phonenumber,
             pure_phonenumber=flat.owners_pure_phonenumber
         )
-        #owner: models.Owner = owner
+
         if not owner.flats.contains(flat):
             owner.flats.add(flat)
         owner.save()
