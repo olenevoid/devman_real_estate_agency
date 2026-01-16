@@ -18,4 +18,7 @@ class ComplainAdmin(admin.ModelAdmin):
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
+    search_fields = ('name', 'pure_phone_number')
+    readonly_fields = ('pure_phonenumber',)
+    list_display = ('name', 'phonenumber', 'pure_phonenumber')
     raw_id_fields = ('flats',)
