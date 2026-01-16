@@ -16,6 +16,7 @@ class FlatAdmin(admin.ModelAdmin):
 class ComplainAdmin(admin.ModelAdmin):
     raw_id_fields = ('user', 'flat')
 
+
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     search_fields = ('name', 'pure_phone_number')
