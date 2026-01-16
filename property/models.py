@@ -81,5 +81,9 @@ class Owner(models.Model):
     )
     flats = models.ManyToManyField(
         Flat,
-        verbose_name='Квартиры в собственности'
+        verbose_name='Квартиры в собственности',
+        related_name='owned_by'
     )
+
+    def __str__(self):
+        return f'{self.name}, {self.pure_phonenumber}, кол-во квартир: {self.flats.count()}'
