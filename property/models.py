@@ -44,7 +44,12 @@ class Flat(models.Model):
         blank=True,
         db_index=True)
 
-    has_balcony = models.BooleanField('Наличие балкона', null=True, blank=True, db_index=True)
+    has_balcony = models.BooleanField(
+        'Наличие балкона',
+        null=True,
+        blank=True,
+        db_index=True
+    )
     active = models.BooleanField('Активно-ли объявление', db_index=True)
     likes = models.ManyToManyField(User, verbose_name='Кто лайкнул')
     construction_year = models.IntegerField(
@@ -89,4 +94,5 @@ class Owner(models.Model):
     )
 
     def __str__(self):
-        return f'{self.name}, {self.pure_phonenumber}, кол-во квартир: {self.flats.count()}'
+        phone = self.pure_phonenumber
+        return f'{self.name}, {phone}, квартир: {self.flats.count()}'
