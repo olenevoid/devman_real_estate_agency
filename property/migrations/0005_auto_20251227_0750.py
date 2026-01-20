@@ -6,9 +6,7 @@ from django.db import migrations, models
 def mark_new_buildings(apps, schema_editor):
 
     Flat: models.Model = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
-        flat.new_building = flat.construction_year > 2014
-        flat.save()
+    Flat.objects.filter(construction_year__gr=2014).update(new_building=True)
 
 
 class Migration(migrations.Migration):
