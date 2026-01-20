@@ -55,7 +55,8 @@ class Flat(models.Model):
     likes = models.ManyToManyField(
         User,
         verbose_name='Кто лайкнул',
-        related_name='flats'
+        related_name='flats',
+        blank=True
     )
     construction_year = models.IntegerField(
         'Год постройки здания',
@@ -97,7 +98,8 @@ class Owner(models.Model):
     flats = models.ManyToManyField(
         Flat,
         verbose_name='Квартиры в собственности',
-        related_name='owned_by'
+        related_name='owned_by',
+        blank=True
     )
 
     def __str__(self):
