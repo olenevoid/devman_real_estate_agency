@@ -5,15 +5,21 @@ from phonenumbers import (
     is_valid_number,
     parse,
     format_number,
-    PhoneNumberFormat
+    PhoneNumberFormat,
+    NumberParseException
 )
 
 
 def parse_numbers(apps, schema_editor):
     Flat: models.Model = apps.get_model('property', 'Flat')
     for flat in Flat.objects.all():
-        parsed_phone_number = parse(flat.owners_phonenumber, 'RU')
-        if is_valid_number(parsed_phone_number):
+        try:
+            parsed_phone_number = parse(flat.owners_phonenumber, 'RU')
+            is_valid = is_valid_number(parsed_phone_number)
+        except NumberParseException:
+            is_valid = False
+
+        if is_valid:
             flat.owners_pure_phonenumber = format_number(
                 parsed_phone_number,
                 PhoneNumberFormat.E164
