@@ -68,7 +68,7 @@ class Flat(models.Model):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
 
-class Complain(models.Model):
+class Complaint(models.Model):
     user = models.ForeignKey(
         User,
         verbose_name='Автор жалобы',
@@ -98,7 +98,7 @@ class Owner(models.Model):
     flats = models.ManyToManyField(
         Flat,
         verbose_name='Квартиры в собственности',
-        related_name='owned_by',
+        related_name='owners',
         blank=True
     )
 

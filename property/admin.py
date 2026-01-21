@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Flat, Complain, Owner
+from .models import Flat, Complaint, Owner
 
 
 class OwnershipInline(admin.TabularInline):
-    model = Flat.owned_by.through
+    model = Flat.owners.through
     raw_id_fields = ('owner',)
 
 
@@ -18,8 +18,8 @@ class FlatAdmin(admin.ModelAdmin):
     inlines = (OwnershipInline,)
 
 
-@admin.register(Complain)
-class ComplainAdmin(admin.ModelAdmin):
+@admin.register(Complaint)
+class ComplaintAdmin(admin.ModelAdmin):
     raw_id_fields = ('user', 'flat')
 
 
