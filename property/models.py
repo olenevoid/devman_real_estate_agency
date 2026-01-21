@@ -55,7 +55,7 @@ class Flat(models.Model):
     likes = models.ManyToManyField(
         User,
         verbose_name='Кто лайкнул',
-        related_name='flats',
+        related_name='likes',
         blank=True
     )
     construction_year = models.IntegerField(
